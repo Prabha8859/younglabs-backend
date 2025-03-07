@@ -4,7 +4,12 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+// Allow all origins
+app.use(cors({
+    origin: "*",  // Allow any frontend to access
+    methods: "GET",
+    allowedHeaders: "Content-Type"
+}));
 
 app.get("/api/greet", (req, res) => {
     const { name } = req.query;
